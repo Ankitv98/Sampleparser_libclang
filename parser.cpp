@@ -13,11 +13,11 @@ int main()
   }
 
   CXCursor cursor = clang_getTranslationUnitCursor(unit);
-  clang_visitChildren(cursor,[](CXCursor c, CXCursor parent, CXClientData client_data)
+  clang_visitChildren(cursor,[](CXCursor cur, CXCursor parent, CXClientData client_data)
     {
-        if (clang_getCursorKindSpelling(clang_getCursorKind(c))=='CXXMethod')
+        if (clang_getCursorKindSpelling(clang_getCursorKind(cur))=='CXXMethod')
         {
-            cout << clang_getCursorSpelling(c) << endl;
+            cout << clang_getCursorSpelling(cur) << endl;
         }
       return CXChildVisit_Recurse;
     },
